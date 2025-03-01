@@ -26,6 +26,7 @@ gcc sys_monitor.c -o KernelSpy -lncurses
 ./KernelSpy
 ```
 # Once running, KernelSpy will display real-time stats for:
+```
 # ✅ CPU Usage  
 # ✅ Memory Usage  
 # ✅ Disk Usage  
@@ -33,10 +34,10 @@ gcc sys_monitor.c -o KernelSpy -lncurses
 # ✅ CPU Temperature  
 
 # Press Ctrl + C to exit.  
-
+```
 
 # Contributions are welcome! Fork the repo and submit a PR.
-
+```
 # 1️⃣ Fork the repo  
 # 2️⃣ Create a new branch  
 git checkout -b feature-name
@@ -48,7 +49,7 @@ git commit -m "Added feature"
 git push origin feature-name
 
 # 5️⃣ Open a Pull Request on GitHub
-
+```
 # KernelSpy is open-source and available under the MIT License.
 
 # GitHub: https://github.com/Nytso2\/KernelSpy  
