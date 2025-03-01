@@ -50,6 +50,6 @@ git push origin feature-name
 
 # 5️⃣ Open a Pull Request on GitHub
 ```
-# KernelSpy is open-source and available under the MIT License.
+# KernelSpy is open-source :> 
 
 # GitHub: https://github.com/Nytso2\/KernelSpy  
