@@ -52,4 +52,4 @@ git push origin feature-name
 ```
 # KernelSpy is open-source :> 
 
-# GitHub: https://github.com/Nytso2\/KernelSpy  
+# GitHub: https://github.com/Nytso2/KernelSpy/ 
