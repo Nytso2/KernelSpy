@@ -13,7 +13,7 @@
 
 ---
 
-## 🛠️ Installation  
+## 🛠️ Installation & Usage  
 ```bash
 # 1️⃣ Clone the repository
 git clone https://github.com/YOUR-USERNAME/KernelSpy.git
@@ -25,7 +25,6 @@ gcc sys_monitor.c -o KernelSpy -lncurses
 # 3️⃣ Run KernelSpy
 ./KernelSpy
 
-
 # Once running, KernelSpy will display real-time stats for:
 # ✅ CPU Usage  
 # ✅ Memory Usage  
@@ -35,8 +34,21 @@ gcc sys_monitor.c -o KernelSpy -lncurses
 
 # Press Ctrl + C to exit.  
 
-# Test CPU & Memory stress
-stress-ng --vm 2 --vm-bytes 90% --vm-method all --timeout 5s
 
-# Test Network traffic detection
-wget http://speedtest.tele2.net/1GB.zip
+# Contributions are welcome! Fork the repo and submit a PR.
+
+# 1️⃣ Fork the repo  
+# 2️⃣ Create a new branch  
+git checkout -b feature-name
+
+# 3️⃣ Commit your changes  
+git commit -m "Added feature"
+
+# 4️⃣ Push to your branch  
+git push origin feature-name
+
+# 5️⃣ Open a Pull Request on GitHub
+
+# KernelSpy is open-source and available under the MIT License.
+
+# GitHub: https://github.com/Nytso2\/KernelSpy  
