@@ -24,7 +24,7 @@ gcc sys_monitor.c -o KernelSpy -lncurses
 
 # 3️⃣ Run KernelSpy
 ./KernelSpy
-
+```
 # Once running, KernelSpy will display real-time stats for:
 # ✅ CPU Usage  
 # ✅ Memory Usage  
