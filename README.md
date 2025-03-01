@@ -1,3 +1,5 @@
+#Still under development
+
 # 🖥️ KernelSpy – Terminal System Monitor  
 
 **KernelSpy** is a **lightweight, terminal-based system monitor** for Linux, built in **C with ncurses**. It provides **real-time insights** into CPU usage, memory, disk, network activity, and system temperature, all in a sleek and minimal CLI interface. Perfect for performance monitoring, debugging, and power users who prefer a **fast, efficient, and resource-friendly** alternative to GUI-heavy system monitors.  
@@ -40,16 +42,8 @@ gcc sys_monitor.c -o KernelSpy -lncurses
 ```
 # 1️⃣ Fork the repo  
 # 2️⃣ Create a new branch  
-git checkout -b feature-name
-
 # 3️⃣ Commit your changes  
-git commit -m "Added feature"
-
 # 4️⃣ Push to your branch  
-git push origin feature-name
-
-# 5️⃣ Open a Pull Request on GitHub
 ```
 # KernelSpy is open-source :> 
 
-# GitHub: https://github.com/Nytso2/KernelSpy/ 
