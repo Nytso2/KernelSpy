@@ -27,9 +27,10 @@ cd KernelSpy
      sudo make
      to remove
      sudo make clean
-# Once running, KernelSpy will display real-time stats for:
 ```
+# Once running, KernelSpy will display real-time stats for:
 
+```bash
 # ✅ CPU Usage  
 # ✅ Memory Usage  
 # ✅ Disk Usage  
