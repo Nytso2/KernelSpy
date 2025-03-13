@@ -29,6 +29,7 @@ cd KernelSpy
      sudo make clean
 # Once running, KernelSpy will display real-time stats for:
 ```
+
 # ✅ CPU Usage  
 # ✅ Memory Usage  
 # ✅ Disk Usage  
