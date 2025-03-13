@@ -21,12 +21,12 @@
 git clone https://github.com/YOUR-USERNAME/KernelSpy.git
 cd KernelSpy
 
-# 2️⃣ Compile the source code
-gcc sys_monitor.c -o KernelSpy -lncurses
-
-# 3️⃣ Run KernelSpy
-./KernelSpy
-```
+# 2️⃣ jump into the directory
+     cd ..
+# 3️⃣ Makefile
+     sudo make
+     to remove
+     sudo make clean
 # Once running, KernelSpy will display real-time stats for:
 ```
 # ✅ CPU Usage  
