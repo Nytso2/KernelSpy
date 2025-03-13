@@ -37,7 +37,7 @@ cd KernelSpy
 # ✅ Network Traffic (Download & Upload in KB/s)  
 # ✅ CPU Temperature  
 
-# Press Ctrl + C to exit.  
+# Press q to exit.  
 ```
 
 # Contributions are welcome! Fork the repo and submit a PR.
