@@ -1,3 +1,10 @@
+//
+//  main.c
+//  Kernel_Spy
+//
+//  Created by Luis on 3/12/25.
+//
+
 #include <ncurses.h>
 #include "../include/cpu.h"
 #include "../include/network.h"

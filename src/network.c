@@ -51,16 +51,15 @@ void get_network_usage(double *rx_rate, double *tx_rate) {
     prev_rx = rx_bytes;
     prev_tx = tx_bytes;
 }
-
 void draw_network_page() {
-    double rx, tx;
-    get_network_usage(&rx, &tx);
-    clear();
-    attron(A_BOLD);
-    mvprintw(0, 2, "[ NETWORK USAGE ]");
-    attroff(A_BOLD);
-    mvprintw(2, 4, "Download: %.2f KB/s", rx);
-    mvprintw(3, 4, "Upload: %.2f KB/s", tx);
-    mvprintw(5, 2, "Press 'q' to return.");
-    refresh();
+    endwin();  // Close ncurses screen
+    system("bmon");  // Launch external network monitor (you can change this to bmon, iftop, etc.)
+    initscr();  // Restart ncurses
+    cbreak();
+    noecho();
+    curs_set(0);
+    start_color();
+    init_pair(1, COLOR_GREEN, COLOR_BLACK);
+    init_pair(2, COLOR_YELLOW, COLOR_BLACK);
+    init_pair(3, COLOR_RED, COLOR_BLACK);
 }
