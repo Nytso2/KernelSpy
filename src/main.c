@@ -1,10 +1,3 @@
-//
-//  main.c
-//  Kernel_Spy
-//
-//  Created by Luis on 3/12/25.
-//
-
 #include <ncurses.h>
 #include "../include/cpu.h"
 #include "../include/network.h"
@@ -35,6 +28,8 @@ void draw_menu(int highlight) {
     refresh();
 }
 
+int draw_network_page();
+
 int main() {
     initscr();
     cbreak();
@@ -57,13 +52,16 @@ int main() {
         if (c == 'q') break;
         else if (c == KEY_UP) highlight = (highlight - 1 + NUM_MENU_ITEMS) % NUM_MENU_ITEMS;
         else if (c == KEY_DOWN) highlight = (highlight + 1) % NUM_MENU_ITEMS;
-        else if (c == 10) { // Enter
+        else if (c == 10) { // Enter key
+            int exit_view = 0;
             while (1) {
                 if (highlight == 0) draw_cpu_page();
-                else if (highlight == 1) draw_network_page();
+                else if (highlight == 1) exit_view = draw_network_page();
                 else if (highlight == 2) draw_memory_page();
                 else if (highlight == 3) draw_disk_page();
                 else if (highlight == 4) draw_temp_page();
+
+                if (exit_view) break;
 
                 c = getch();
                 if (c == 'q') break;
@@ -74,4 +72,3 @@ int main() {
     endwin();
     return 0;
 }
-
