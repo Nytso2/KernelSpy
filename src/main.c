@@ -1,36 +1,57 @@
 #include <ncurses.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
+#include <locale.h>
 #include "../include/cpu.h"
 #include "../include/network.h"
 #include "../include/memory.h"
 #include "../include/disk.h"
-#include "../include/temp.h"
 
-const char *menu[] = { "CPU", "Network", "Memory", "Disk", "Temperature" };
+const char *menu[] = { "[ CPU ]", "[ Network ]", "[ Memory ]", "[ Disk ]" };
 #define NUM_MENU_ITEMS (sizeof(menu) / sizeof(menu[0]))
 
-void draw_menu(int highlight) {
-    clear();
-    attron(A_BOLD);
-    mvprintw(0, 2, "SYSTEM MONITOR - SELECT A CATEGORY");
-    attroff(A_BOLD);
-    mvhline(1, 0, '=', COLS);
+void draw_footer() {
+    char timebuf[64];
+    time_t now = time(NULL);
+    strftime(timebuf, sizeof(timebuf), "%a %b %d %H:%M:%S", localtime(&now));
 
-    for (int i = 0; i < NUM_MENU_ITEMS; i++) {
-        if (i == highlight) attron(A_REVERSE);
-        mvprintw(3 + i, 4, "%s", menu[i]);
-        if (i == highlight) attroff(A_REVERSE);
+    attron(COLOR_PAIR(3));
+    mvhline(LINES - 3, 1, ACS_HLINE, COLS - 2);
+    attroff(COLOR_PAIR(3));
+    attron(A_DIM);
+    mvprintw(LINES - 2, 2, "Use Arrow Keys to navigate | Enter to select | q to quit | Time: %s", timebuf);
+    attroff(A_DIM);
+}
+
+void draw_menu(size_t highlight) {
+    clear();
+    box(stdscr, 0, 0);
+
+    attron(A_BOLD | COLOR_PAIR(2));
+    mvprintw(1, (COLS - 27) / 2, "[ KernelSpy System Monitor ]");
+    attroff(A_BOLD | COLOR_PAIR(2));
+
+    mvhline(2, 1, ACS_HLINE, COLS - 2);
+
+    for (size_t i = 0; i < NUM_MENU_ITEMS; i++) {
+        if (i == highlight) {
+            attron(COLOR_PAIR(1) | A_REVERSE);
+            mvprintw(4 + i * 2, (COLS - strlen(menu[i])) / 2, "%s", menu[i]);
+            attroff(COLOR_PAIR(1) | A_REVERSE);
+        } else {
+            mvprintw(4 + i * 2, (COLS - strlen(menu[i])) / 2, "%s", menu[i]);
+        }
     }
 
-    mvhline(10, 0, '=', COLS);
-    attron(A_DIM);
-    mvprintw(12, 2, "Use Arrow Keys to navigate, Enter to select, q to quit.");
-    attroff(A_DIM);
+    draw_footer();
     refresh();
 }
 
 int draw_network_page();
 
 int main() {
+    setlocale(LC_ALL, "");
     initscr();
     cbreak();
     noecho();
@@ -38,11 +59,12 @@ int main() {
     keypad(stdscr, TRUE);
     start_color();
 
-    init_pair(1, COLOR_GREEN, COLOR_BLACK);
-    init_pair(2, COLOR_YELLOW, COLOR_BLACK);
-    init_pair(3, COLOR_RED, COLOR_BLACK);
+    use_default_colors();
+    init_pair(1, COLOR_GREEN, -1);   // Menu highlight
+    init_pair(2, COLOR_BLACK, -1);    // Header
+    init_pair(3, COLOR_YELLOW, -1);  // Footer line
 
-    int highlight = 0;
+    size_t highlight = 0;
     int c;
 
     while (1) {
@@ -59,7 +81,6 @@ int main() {
                 else if (highlight == 1) exit_view = draw_network_page();
                 else if (highlight == 2) draw_memory_page();
                 else if (highlight == 3) draw_disk_page();
-                else if (highlight == 4) draw_temp_page();
 
                 if (exit_view) break;
 
