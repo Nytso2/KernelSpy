@@ -70,4 +70,4 @@ yay -S kernelspy
 ---
 
 ## 💻 License  
-KernelSpy is open-source under the MIT License. Contributions and feedback are always welcome!
+KernelSpy is open-source under No License. Contributions and feedback are always welcome!
