@@ -1,15 +1,25 @@
 CC = gcc
-CFLAGS = -Wall -Iinclude
-LDFLAGS = -lncurses -lsensors
+CFLAGS = -Wall -Wextra -g
+LDFLAGS = -lncurses
 
-SRC = src/main.c src/cpu.c src/network.c src/memory.c src/disk.c 
+SRC = src/main.c src/cpu.c src/network.c src/memory.c src/disk.c
 OBJ = $(SRC:.c=.o)
-TARGET = KernelSpy
 
-all: $(TARGET)
+BIN = KernelSpy
 
-$(TARGET): $(OBJ)
-	$(CC) -o $@ $^ $(LDFLAGS)
+all: $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(TARGET)
+	rm -f $(OBJ) $(BIN)
+
+install: $(BIN)
+	sudo install -Dm755 $(BIN) /usr/local/bin/$(BIN)
+
+uninstall:
+	sudo rm -f /usr/local/bin/$(BIN)
