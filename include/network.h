@@ -9,6 +9,6 @@
 #define NETWORK_H
 
 void get_network_usage(double *rx_rate, double *tx_rate);
-void draw_network_page();
+int draw_network_page();
 
 #endif
